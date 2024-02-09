@@ -3,7 +3,9 @@ guid: 460d5d742f8a1684abb65684bd86ecad
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - controller: {instanceID: 0}
+  - cam: {fileID: 7540148451907634090, guid: 283c71ed7d82d8947a89f6761ec28ae1, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
