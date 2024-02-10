@@ -12,14 +12,14 @@ public class Interact : MonoBehaviour
 
     private void Start()
     {
-        _anim = GetComponent<Animator>();
+        _anim = GetComponent<Animator>(); // Gets animator
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Interactable"))
         {
-            contextPrompt.SetActive(true);
+            contextPrompt.SetActive(true); // Enables context prompt
         }
     }
 
@@ -27,14 +27,15 @@ public class Interact : MonoBehaviour
     {
         if (other.CompareTag("Interactable") && interacting)
         {
-            other.GetComponent<IInteractable>().Interact(_anim);
+            other.GetComponent<IInteractable>().Interact(_anim); // Calls interact method on object and passes in anim 
             interacting = false;
 
-            if(other.name == "Bed")
+            if (other.name == "Chest") contextPrompt.SetActive(false); // Disable context menu
+
+            if(other.name == "Bed") // Set character height to 0
             {
                 GetComponent<CharacterController>().height = 0;
             }
-            Debug.Log("Times interacted");
         }
     }
 
@@ -42,11 +43,15 @@ public class Interact : MonoBehaviour
     {
         if (other.CompareTag("Interactable"))
         {
-            contextPrompt.SetActive(false);
+            contextPrompt.SetActive(false); // Disables Context Prompt
             other.GetComponent<IInteractable>().InUse = false;
         }
     }
 
+    /// <summary>
+    /// Checks if player is pressing interact action button
+    /// </summary>
+    /// <param name="value"></param>
     public void OnInteract(InputValue value)
     {
         interacting = value.isPressed;
