@@ -6,6 +6,7 @@ public class Sleep : MonoBehaviour, IInteractable
 
     void Start()
     {
+
     }
 
     // Implements IInteractable to make player sleep
