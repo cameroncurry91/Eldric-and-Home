@@ -38,6 +38,7 @@ public class Interact : MonoBehaviour
         if (other.CompareTag("Interactable"))
         {
             contextPrompt.SetActive(false);
+            other.GetComponent<IInteractable>().InUse = false;
         }
     }
 
