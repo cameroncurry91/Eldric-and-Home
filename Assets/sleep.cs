@@ -10,10 +10,9 @@ public class Sleep : MonoBehaviour
         AnimationController_Jamo = GetComponent<Animator>();
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        // Check if the collision is with a bed object
-        if (collision.gameObject.CompareTag("Bed"))
+        if (hit.gameObject.CompareTag("Bed"))
         {
             // Play the falling asleep animation
             AnimationController_Jamo.SetTrigger("sleep");
