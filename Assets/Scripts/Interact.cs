@@ -29,6 +29,11 @@ public class Interact : MonoBehaviour
         {
             other.GetComponent<IInteractable>().Interact(_anim);
             interacting = false;
+
+            if(other.name == "Bed")
+            {
+                GetComponent<CharacterController>().height = 0;
+            }
             Debug.Log("Times interacted");
         }
     }
