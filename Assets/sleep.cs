@@ -1,21 +1,15 @@
 using UnityEngine;
 
-public class Sleep : MonoBehaviour
+public class Sleep : MonoBehaviour, IInteractable
 {
-    private Animator AnimationController_Jamo;
-
     void Start()
     {
-        // Get the Animator component attached to the character
-        AnimationController_Jamo = GetComponent<Animator>();
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    // Implements IInteractable to make player sleep
+    public void Interact(Animator anim)
     {
-        if (hit.gameObject.CompareTag("Bed"))
-        {
-            // Play the falling asleep animation
-            AnimationController_Jamo.SetTrigger("sleep");
-        }
+        anim.SetTrigger("sleep");
+        Debug.Log("Sleeping zzz");
     }
 }
