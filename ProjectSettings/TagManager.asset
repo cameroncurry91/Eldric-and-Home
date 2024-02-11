@@ -9,6 +9,7 @@ TagManager:
   - Bed
   - CinemachineTarget
   - Interactable
+  - Roof
   layers:
   - Default
   - TransparentFX
