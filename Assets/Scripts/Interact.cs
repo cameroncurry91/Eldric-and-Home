@@ -30,7 +30,7 @@ public class Interact : MonoBehaviour
             other.GetComponent<IInteractable>().Interact(_anim); // Calls interact method on object and passes in anim 
             interacting = false;
 
-            if (other.name == "Chest") contextPrompt.SetActive(false); // Disable context menu
+            if (other.name == "Chest" || other.name == "Mailbox") contextPrompt.SetActive(false); // Disable context menu
 
             if(other.name == "Bed") // Set character height to 0
             {
@@ -45,6 +45,7 @@ public class Interact : MonoBehaviour
         {
             contextPrompt.SetActive(false); // Disables Context Prompt
             other.GetComponent<IInteractable>().InUse = false;
+
         }
     }
 
