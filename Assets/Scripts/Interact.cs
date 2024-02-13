@@ -35,6 +35,7 @@ public class Interact : MonoBehaviour
             if(other.name == "Bed") // Set character height to 0
             {
                 GetComponent<CharacterController>().height = 0;
+                GetComponent<EnableDisableInput>().EnableDisable(false);
             }
         }
     }
