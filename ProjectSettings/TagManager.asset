@@ -7,11 +7,13 @@ TagManager:
   - PlayerEyes
   - triggertest
   - Bed
+  - CinemachineTarget
+  - Interactable
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
