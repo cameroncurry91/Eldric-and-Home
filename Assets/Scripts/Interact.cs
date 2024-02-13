@@ -32,9 +32,8 @@ public class Interact : MonoBehaviour
 
             if (other.name == "Chest" || other.name == "Mailbox") contextPrompt.SetActive(false); // Disable context menu
 
-            if(other.name == "Bed") // Set character height to 0
+            if(other.name == "Bed")
             {
-                GetComponent<CharacterController>().height = 0;
                 GetComponent<EnableDisableInput>().EnableDisable(false);
             }
         }
