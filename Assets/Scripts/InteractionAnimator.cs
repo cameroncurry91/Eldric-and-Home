@@ -15,7 +15,7 @@ public class InteractionAnimator : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        if(InUse == false && anim.GetBool("Interact") == true)
+        if(InUse == false && anim !=null && anim.GetBool("Interact") == true)
         {
             EndAnimate();
         }
