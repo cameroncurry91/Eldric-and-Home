@@ -14,6 +14,7 @@ public class Chest : InteractionAnimator
     public override void Interact(Animator anim)
     {
         // Animate();
+        InUse = true;
         Destroy(gameObject); // temp just deleting it
     }
 }

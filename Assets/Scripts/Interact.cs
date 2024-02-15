@@ -17,7 +17,7 @@ public class Interact : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Interactable"))
+        if (other.CompareTag("Interactable") && other.GetComponent<IInteractable>().InUse == false)
         {
             contextPrompt.SetActive(true); // Enables context prompt
         }
@@ -27,14 +27,16 @@ public class Interact : MonoBehaviour
     {
         if (other.CompareTag("Interactable") && interacting)
         {
-            other.GetComponent<IInteractable>().Interact(_anim); // Calls interact method on object and passes in anim 
+            IInteractable interactable = other.GetComponent<IInteractable>();
+            interactable.Interact(_anim); // Calls interact method on object and passes in anim 
             interacting = false;
 
-            if (other.name == "Chest" || other.name == "Mailbox") contextPrompt.SetActive(false); // Disable context menu
+            contextPrompt.SetActive(false); // Disable context menu
 
-            if(other.name == "Bed")
+            if(other.name == "Bed" || other.name == "Cook")
             {
                 GetComponent<EnableDisableInput>().EnableDisable(false);
+                contextPrompt.SetActive(false);
             }
         }
     }

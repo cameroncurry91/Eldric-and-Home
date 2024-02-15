@@ -17,6 +17,7 @@ public class Cook : InteractionAnimator
     public override void Interact(Animator anim)
     {
         // Animate();
+        InUse = true;
         directorguydude.Play();
     }
 }
