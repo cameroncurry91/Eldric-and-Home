@@ -25,12 +25,14 @@ public class Sleep : MonoBehaviour, IInteractable
         InUse = true; // Set to in use
         savePanel.SetActive(true);
         EventSystem.current.SetSelectedGameObject(yesButton);
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void GetUp()
     {
         InUse = false;
         lastAnim.SetBool("Sleep", false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
     
     public void SaveQuit()
