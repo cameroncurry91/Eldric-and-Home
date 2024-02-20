@@ -1669,6 +1669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4dd3c5970d14b4382d2b39986f12ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  savePanel: {fileID: 0}
+  yesButton: {fileID: 0}
 --- !u!1 &758655037 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -994976276959337107, guid: 9416f8d76ad97fb4881d8e490847f814, type: 3}
@@ -2529,6 +2531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec4dd3c5970d14b4382d2b39986f12ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  savePanel: {fileID: 0}
+  yesButton: {fileID: 0}
 --- !u!135 &1199223768
 SphereCollider:
   m_ObjectHideFlags: 0
