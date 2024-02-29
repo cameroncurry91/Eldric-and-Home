@@ -1,7 +1,9 @@
-﻿ using UnityEngine;
-#if ENABLE_INPUT_SYSTEM 
+﻿using UnityEngine;
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
+using UnityEngine.UI;
+
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
@@ -126,6 +128,7 @@ namespace StarterAssets
         private void Awake()
         {
             // get a reference to our main camera
+
             if (_mainCamera == null)
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -134,8 +137,12 @@ namespace StarterAssets
 
         private void Start()
         {
+
+            // CurrentStamina = MaxStamina;
+            // StaminaBar.SetStamina(MaxStamina);
+
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
+
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -151,10 +158,13 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
-
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
+
+            // Stamina -= RunCost * Time.deltaTime;
+            // if (Stamina < 0) Stamina = 0;
+
 
             JumpAndGravity();
             GroundedCheck();
@@ -304,7 +314,6 @@ namespace StarterAssets
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-
                     // update animator if using character
                     if (_hasAnimator)
                     {
@@ -387,6 +396,9 @@ namespace StarterAssets
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
+
         }
+
     }
 }
+
