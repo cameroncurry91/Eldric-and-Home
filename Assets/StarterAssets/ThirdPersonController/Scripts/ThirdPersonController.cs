@@ -16,6 +16,9 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
+        public HeartScript heartScript;
+
+
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -158,18 +161,64 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
+        private void TakeDamage(float damageAmount)
+        {
+            if (heartScript != null)
+            {
+                heartScript.AdjustHealth(-.5F); // Take damage as a floating-point value
+            }
+        }
+
+        private void Heal(float healAmount)
+        {
+            if (heartScript != null)
+            {
+                heartScript.AdjustHealth(.5F); // Heal using a floating-point value
+            }
+        }
+       
+        private float healthDecreaseInterval = 1.0f; // Interval in seconds
+        private float nextHealthDecreaseTime = 0.0f;
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.gameObject.tag == "Enemy")
+            {
+                if (Time.time >= nextHealthDecreaseTime)
+                {
+                    heartScript.AdjustHealth(-.5F);
+                    nextHealthDecreaseTime = Time.time + healthDecreaseInterval;
+                }
+            }
+        }
+
         private void Update()
         {
+
+            // Check for the "H" key press to heal the player
+            if (Input.GetKeyDown(KeyCode.H))
+    {
+                heartScript.AdjustHealth(.5F);
+
+    }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                heartScript.AdjustHealth(-.5F);
+
+            }
+
             _hasAnimator = TryGetComponent(out _animator);
 
-            // Stamina -= RunCost * Time.deltaTime;
-            // if (Stamina < 0) Stamina = 0;
-
-
+            
             JumpAndGravity();
             GroundedCheck();
             Move();
         }
+
+        //private void HealPlayer()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
         private void LateUpdate()
         {

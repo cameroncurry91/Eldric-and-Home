@@ -10,6 +10,7 @@ TagManager:
   - CinemachineTarget
   - Interactable
   - Roof
+  - Enemy
   layers:
   - Default
   - TransparentFX

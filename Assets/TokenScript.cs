@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    public GameHandler GH;
+    [SerializeField] private GameHandler GH;
     public AudioClip CoinSound;
     void Start()
     {
-        GH = GameObject.Find("coin").GetComponent<GameHandler>();
-        
+        if (GH == null)
+        {
+            Debug.LogError("GameHandler reference not set in the Inspector");
+        }
+
     }
-    private void Update()
-    {
+    //private void Update()
+    //{
         
-    }
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
