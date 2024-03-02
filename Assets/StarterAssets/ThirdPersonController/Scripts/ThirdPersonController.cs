@@ -1,7 +1,9 @@
-﻿ using UnityEngine;
-#if ENABLE_INPUT_SYSTEM 
+﻿using UnityEngine;
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
+using UnityEngine.UI;
+
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
@@ -14,6 +16,9 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
+        public HeartScript heartScript;
+
+
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -126,6 +131,7 @@ namespace StarterAssets
         private void Awake()
         {
             // get a reference to our main camera
+
             if (_mainCamera == null)
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -134,8 +140,12 @@ namespace StarterAssets
 
         private void Start()
         {
+
+            // CurrentStamina = MaxStamina;
+            // StaminaBar.SetStamina(MaxStamina);
+
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
+
             _hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
@@ -151,15 +161,64 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
+        private void TakeDamage(float damageAmount)
+        {
+            if (heartScript != null)
+            {
+                heartScript.AdjustHealth(-.5F); // Take damage as a floating-point value
+            }
+        }
+
+        private void Heal(float healAmount)
+        {
+            if (heartScript != null)
+            {
+                heartScript.AdjustHealth(.5F); // Heal using a floating-point value
+            }
+        }
+       
+        private float healthDecreaseInterval = 1.0f; // Interval in seconds
+        private float nextHealthDecreaseTime = 0.0f;
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.gameObject.tag == "Enemy")
+            {
+                if (Time.time >= nextHealthDecreaseTime)
+                {
+                    heartScript.AdjustHealth(-.5F);
+                    nextHealthDecreaseTime = Time.time + healthDecreaseInterval;
+                }
+            }
+        }
 
         private void Update()
         {
+
+            // Check for the "H" key press to heal the player
+            if (Input.GetKeyDown(KeyCode.H))
+    {
+                heartScript.AdjustHealth(.5F);
+
+    }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                heartScript.AdjustHealth(-.5F);
+
+            }
+
             _hasAnimator = TryGetComponent(out _animator);
 
+            
             JumpAndGravity();
             GroundedCheck();
             Move();
         }
+
+        //private void HealPlayer()
+        //{
+        //    throw new System.NotImplementedException();
+        //}
 
         private void LateUpdate()
         {
@@ -304,7 +363,6 @@ namespace StarterAssets
                 {
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-
                     // update animator if using character
                     if (_hasAnimator)
                     {
@@ -387,6 +445,9 @@ namespace StarterAssets
             {
                 AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
             }
+
         }
+
     }
 }
+
