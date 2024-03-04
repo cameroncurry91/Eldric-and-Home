@@ -7075,10 +7075,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 838575617}
+    - target: {fileID: 5237767174683912359, guid: 2a7dde8daa527e94bb37cec78acdd8d0, type: 3}
+      propertyPath: m_VersionIndex
+      value: 4641
+      objectReference: {fileID: 0}
     - target: {fileID: 5559072302600326202, guid: 2a7dde8daa527e94bb37cec78acdd8d0, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 271105238}
+    - target: {fileID: 5559072302600326202, guid: 2a7dde8daa527e94bb37cec78acdd8d0, type: 3}
+      propertyPath: m_VersionIndex
+      value: 1248
+      objectReference: {fileID: 0}
     - target: {fileID: 6266164553457455643, guid: 2a7dde8daa527e94bb37cec78acdd8d0, type: 3}
       propertyPath: m_Mesh
       value: 
