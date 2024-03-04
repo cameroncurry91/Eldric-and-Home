@@ -18,6 +18,12 @@ public class HeartScript : MonoBehaviour
     public Sprite TwentyPercentHeart;
     public Animator Temp; // Reference to the Animator component
 
+    // Fall damage variables
+    float distanceToGround = 1;
+    public float fallThreshold = 1f; // Minimum fall height to receive damage
+    private float highestPoint; // Tracks the highest point during a fall
+    private bool isGrounded; // Tracks if the player is on the ground
+
     private void Start()
     {
         {
@@ -49,9 +55,40 @@ public class HeartScript : MonoBehaviour
     }
     private void Update()
     {
-       
+        CheckGroundStatus();
     }
-        public void AdjustHealth(float amount)
+    private void CheckGroundStatus()
+    {
+
+        float raycastLength = 1f; // Slightly longer than distanceToGround to ensure detection
+        LayerMask groundLayer = LayerMask.GetMask("Ground"); // Make sure your ground objects are in a layer named "Ground" or adjust this accordingly
+
+        // Cast a ray straight down.
+        RaycastHit hit;
+        isGrounded = Physics.Raycast(transform.position, -Vector3.up, out hit, raycastLength, groundLayer);
+
+
+        if (!isGrounded)
+        {
+            highestPoint = Mathf.Max(highestPoint, transform.position.y);
+        }
+        else if (highestPoint > 0)
+        {
+            float fallDistance = highestPoint - transform.position.y;
+            if (fallDistance > fallThreshold)
+            {
+                AdjustHealth(-Mathf.Infinity); // Apply fatal fall damage
+                if (Health <= 0)
+                {
+                    PlayDeathAnimation(); // Ensure death animation plays after fatal damage
+                }
+            }
+            highestPoint = 0;
+        }
+    }
+
+
+    public void AdjustHealth(float amount)
     {
         Health += amount;
         Health = Mathf.Clamp(Health, 0, numOfHearts * 2f); // Use floating-point for max health
@@ -64,8 +101,9 @@ public class HeartScript : MonoBehaviour
         }
 
         // Check if health has dropped to 0 and play death animation
-        if (Health <= 0)
+        if (Health <= 0 && Temp != null)
         {
+            
             PlayDeathAnimation();
         }
     }
