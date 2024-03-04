@@ -17,6 +17,7 @@ namespace StarterAssets
     public class ThirdPersonController : MonoBehaviour
     {
         public HeartScript heartScript;
+        private bool _isAlive = true;
 
 
         [Header("Player")]
@@ -194,6 +195,15 @@ namespace StarterAssets
 
         private void Update()
         {
+            if (!_isAlive) return; // If the player is not alive, stop processing the update here
+
+            
+
+            // Check the player's health and disable inputs if health is 0 or less
+            if (heartScript.Health <= 0 && _isAlive)
+            {
+                DisablePlayerInputs();
+            }
 
             // Check for the "H" key press to heal the player
             if (Input.GetKeyDown(KeyCode.H))
@@ -214,7 +224,12 @@ namespace StarterAssets
             GroundedCheck();
             Move();
         }
+        private void DisablePlayerInputs()
+        {
+            _isAlive = false; // Set the flag to false to stop input processing
 
+            // Optionally, here you can add additional logic to disable other player actions 
+        }
         //private void HealPlayer()
         //{
         //    throw new System.NotImplementedException();
