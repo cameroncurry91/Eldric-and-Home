@@ -2328,14 +2328,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Dear Eldric,
 
-    
 
-    Max here. My welder''s on the fritz, and I''m
-    missing some parts to fix it up. Think you could help me out? I''ll teach you
-    how to use the screwdriver, and it''ll be yours as a thank-you. Just let me know
-    if you can lend a paw.
 
-    
+    Max here. My welder''s on the fritz, and I''m missing
+    some parts to fix it up. Think you could help me out? I''ll teach you how to
+    use the screwdriver, and it''ll be yours as a thank-you. Just let me know if
+    you can lend a paw.
+
+
 
     Cheers,
 
@@ -6258,6 +6258,7 @@ MonoBehaviour:
   EightyPercentHeart: {fileID: 21300000, guid: 49c11fa0eb891844e8805e9b9319b2b8, type: 3}
   TwentyPercentHeart: {fileID: 21300000, guid: 0705f7ca9f7bfe44e9d7733c1b72821c, type: 3}
   Temp: {fileID: 0}
+  fallThreshold: 1
 --- !u!1 &1692022171
 GameObject:
   m_ObjectHideFlags: 0
