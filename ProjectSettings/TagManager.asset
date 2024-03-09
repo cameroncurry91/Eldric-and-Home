@@ -12,6 +12,7 @@ TagManager:
   - Roof
   - Enemy
   - Ground
+  - NPC
   layers:
   - Default
   - TransparentFX
