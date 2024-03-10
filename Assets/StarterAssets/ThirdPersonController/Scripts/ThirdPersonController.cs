@@ -211,7 +211,7 @@ namespace StarterAssets
                 // Assuming the roll animation is 1 second long for this example. Adjust accordingly.
                 StartCoroutine(ResetRoll(.5f));
             }
-            if (!_isAlive) return; // If the player is not alive, stop processing the update here
+            if (!_isAlive && Grounded) return; // If the player is not alive, stop processing the update here
 
 
 
