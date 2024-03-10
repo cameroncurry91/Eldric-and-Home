@@ -516,8 +516,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 18.962242, y: 12.77357}
-    canvasZoom: 1.06
+    canvasScrollPosition: {x: 0, y: 0}
+    canvasZoom: 1.03
   - id: 2
     fields:
     - title: Title
@@ -654,7 +654,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'Hello '
+        value: wow, what a beatiful day to demolish a raccoon
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -703,7 +703,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: 'Hello TEST TEST '
+        value: Man i am Hungry...is anyone else feeling a BLT?
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -725,7 +725,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 416.31067
+        x: 409.11646
         y: 123.689316
         width: 160
         height: 30
@@ -752,7 +752,7 @@ MonoBehaviour:
         type: 0
         typeString: CustomFieldType_Text
       - title: Dialogue Text
-        value: Hello Down There!
+        value: '*whistling a tune*'
         type: 0
         typeString: CustomFieldType_Text
       - title: Sequence
@@ -774,13 +774,13 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 402.71844
-        y: 184.85435
+        x: 414.9486
+        y: 177.66005
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 4.396411, y: 2.9950469}
-    canvasZoom: 1.03
+    canvasScrollPosition: {x: 87.929016, y: 4.3165536}
+    canvasZoom: 1.3899996
   - id: 3
     fields:
     - title: Title
@@ -1683,7 +1683,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 531.07764
+        x: 531.6491
         y: 80.53128
         width: 160
         height: 30
@@ -1733,7 +1733,7 @@ MonoBehaviour:
       userScript: 'SetQuestState("get da princess", "active");
 
         ShowAlert("New
-        Quest: Find the Princess and slay the Dragon")'
+        Quest: Find the Princess")'
       onExecute:
         m_PersistentCalls:
           m_Calls: []
@@ -1788,8 +1788,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 487.34302
-        y: 179.44524
+        x: 487.91443
+        y: 180.01668
         width: 160
         height: 30
     - id: 7
@@ -1946,8 +1946,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 130.9125, y: 0}
-    canvasZoom: 1.2999996
+    canvasScrollPosition: {x: 255.19289, y: 0}
+    canvasZoom: 1.7499992
   syncInfo:
     syncActors: 0
     syncItems: 0
