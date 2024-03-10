@@ -6090,8 +6090,8 @@ MonoBehaviour:
   JumpTimeout: 0.3
   FallTimeout: 0.15
   Grounded: 1
-  GroundedOffset: -0.05
-  GroundedRadius: 0.1
+  GroundedOffset: -0.14
+  GroundedRadius: 0.28
   GroundLayers:
     serializedVersion: 2
     m_Bits: 8
@@ -6248,7 +6248,6 @@ MonoBehaviour:
   regenDelay: 25
   regenRate: 1
   isRegenerating: 0
-  isAlive: 1
   Health: 10
   numOfHearts: 5
   Hearts:

@@ -7,7 +7,6 @@ using StarterAssets;
 public class Stamina : MonoBehaviour
 {
     public Slider slider;
-    private HeartScript health;
     private StarterAssetsInputs inputs;
     private Coroutine runningCoroutine;
     private Coroutine staminaUpCoroutine;
@@ -19,26 +18,25 @@ public class Stamina : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = GetComponent<HeartScript>();
         inputs = GetComponent<StarterAssetsInputs>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(inputs != null && inputs.sprint && runningCoroutine == null && health.isAlive == true)
+        if(inputs != null && inputs.sprint && runningCoroutine == null)
         {
             runningCoroutine = StartCoroutine(StaminaDown());
         }
 
         SetStaminaSlider();
         
-        if(stamina < 100 && staminaCooldown > 0 && inputs.sprint == false && staminaUpCoroutine == null && health.isAlive == true)
+        if(stamina < 100 && staminaCooldown > 0 && inputs.sprint == false && staminaUpCoroutine == null)
         {
             staminaCooldown -= Time.deltaTime;
         }
 
-        if(stamina < 100 && inputs.sprint == false && staminaCooldown <= 0 && staminaUpCoroutine == null && health.isAlive == true)
+        if(stamina < 100 && inputs.sprint == false && staminaCooldown <= 0 && staminaUpCoroutine == null)
         {
             staminaUpCoroutine = StartCoroutine(StaminaUp());
         }
@@ -56,7 +54,7 @@ public class Stamina : MonoBehaviour
 
     IEnumerator StaminaDown()
     {
-        while(inputs.sprint && stamina > 0 && health.isAlive == true)
+        while(inputs.sprint && stamina > 0)
         {
             staminaCooldown = 10;
             stamina -= 1;
@@ -68,7 +66,7 @@ public class Stamina : MonoBehaviour
 
     IEnumerator StaminaUp()
     {
-        while (inputs.sprint == false && stamina < 100 && health.isAlive == true)
+        while (inputs.sprint == false && stamina < 100)
         {
             stamina += 1;
             yield return new WaitForSeconds(.5f);
