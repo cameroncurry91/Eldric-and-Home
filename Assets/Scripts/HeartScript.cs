@@ -8,6 +8,7 @@ public class HeartScript : MonoBehaviour
     public float regenDelay = 5f; // Delay before regeneration starts after taking damage
     public float regenRate = .5f; // Health regenerated per second
     public bool isRegenerating = false;
+    public bool isAlive = true;
     public float Health; // Now a floating-point value
     public int numOfHearts; // Represents the total number of heart icon slots
     public Image[] Hearts;
@@ -95,7 +96,7 @@ public class HeartScript : MonoBehaviour
         UpdateHearts();
 
         // If taking damage, potentially start regeneration with a delay
-        if (amount < 0 && !isRegenerating)
+        if (amount < 0 && !isRegenerating && isAlive == true)
         {
             StartCoroutine(DelayedRegeneration(regenDelay));
         }
@@ -103,15 +104,16 @@ public class HeartScript : MonoBehaviour
         // Check if health has dropped to 0 and play death animation
         if (Health <= 0 && Temp != null)
         {
-            
+            isAlive = false;
             PlayDeathAnimation();
         }
     }
 
     void PlayDeathAnimation()
     {
-        if (Temp != null)
+        if (Temp != null && Temp.GetBool("IsDead") == false)
         {
+            
             Temp.SetBool("IsDead", true);
             // Optionally disable player movement and other input responses here
         }
@@ -124,7 +126,7 @@ public class HeartScript : MonoBehaviour
         yield return new WaitForSeconds(delay); // Wait for the specified delay
 
         // Start the regeneration process
-        while (Health < numOfHearts * 2)
+        while (Health < numOfHearts * 2 && isAlive)
         {
             AdjustHealth(regenRate * Time.deltaTime);
             yield return null; // Wait until the next frame
