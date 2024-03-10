@@ -2,12 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class HeartScript : MonoBehaviour
 {
-    public GameObject GameOverPanel;
-    public GameObject QuitButton;
     public float regenDelay = 5f; // Delay before regeneration starts after taking damage
     public float regenRate = .5f; // Health regenerated per second
     public bool isRegenerating = false;
@@ -107,7 +104,6 @@ public class HeartScript : MonoBehaviour
         // Check if health has dropped to 0 and play death animation
         if (Health <= 0 && Temp != null)
         {
-            GameOverPanel.SetActive(true);
             isAlive = false;
             PlayDeathAnimation();
         }

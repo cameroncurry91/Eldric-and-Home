@@ -116,6 +116,7 @@ namespace StarterAssets
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
+        private Stamina stamina;
 
         private const float _threshold = 0.01f;
 
@@ -157,6 +158,7 @@ namespace StarterAssets
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM 
             _playerInput = GetComponent<PlayerInput>();
+            stamina = GetComponent<Stamina>();
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
@@ -212,6 +214,8 @@ namespace StarterAssets
                 StartCoroutine(ResetRoll(.5f));
             }
             if (!_isAlive && Grounded) return; // If the player is not alive, stop processing the update here
+
+
 
             // Check the player's health and disable inputs if health is 0 or less
             if (heartScript.Health <= 0 && _isAlive)
@@ -310,13 +314,11 @@ namespace StarterAssets
 
         private void Move()
         {
-            {
-                if (_isRolling) return; // Skip movement logic if rolling
+            if (_isRolling) return; // Skip movement logic if rolling
 
 
-            }
             // set target speed based on move speed, sprint speed and if sprint is pressed
-            float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            float targetSpeed = _input.sprint && stamina.stamina > 0 ? SprintSpeed : MoveSpeed;
 
             // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -382,13 +384,9 @@ namespace StarterAssets
         }
 
         private void JumpAndGravity()
-
         {
-            {
-                if (_isRolling) return; // Skip jump logic if rolling
+            if (_isRolling) return; // Skip jump logic if rolling
 
-
-            }
 
             if (Grounded)
             {
