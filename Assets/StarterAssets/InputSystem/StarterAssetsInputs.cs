@@ -20,7 +20,14 @@ namespace StarterAssets
 		public bool cursorLocked = true;
 		public bool cursorInputForLook = true;
 
+		private Stamina stamina;
+
         public Vector2 MovementInput { get; internal set; }
+
+        private void Start()
+        {
+            stamina = GetComponent<Stamina>();
+        }
 
 #if ENABLE_INPUT_SYSTEM
         public void OnMove(InputValue value)
@@ -65,7 +72,9 @@ namespace StarterAssets
 
 		public void SprintInput(bool newSprintState)
 		{
-			sprint = newSprintState;
+			if (stamina.stamina > 0)
+				sprint = newSprintState;
+			else sprint = false;
 		}
 
 		private void OnApplicationFocus(bool hasFocus)
