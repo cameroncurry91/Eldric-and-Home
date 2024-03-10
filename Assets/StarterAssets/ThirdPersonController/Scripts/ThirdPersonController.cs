@@ -213,8 +213,6 @@ namespace StarterAssets
             }
             if (!_isAlive && Grounded) return; // If the player is not alive, stop processing the update here
 
-
-
             // Check the player's health and disable inputs if health is 0 or less
             if (heartScript.Health <= 0 && _isAlive)
             {
