@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿
+using System.Collections;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
 #endif
@@ -16,9 +18,11 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
+       
+
         public HeartScript heartScript;
         private bool _isAlive = true;
-
+        private bool _IsRolling = true;
 
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -101,6 +105,7 @@ namespace StarterAssets
         private int _animIDSpeed;
         private int _animIDGrounded;
         private int _animIDJump;
+        private int _animIDRoll;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
 
@@ -177,7 +182,7 @@ namespace StarterAssets
                 heartScript.AdjustHealth(.5F); // Heal using a floating-point value
             }
         }
-       
+
         private float healthDecreaseInterval = 1.0f; // Interval in seconds
         private float nextHealthDecreaseTime = 0.0f;
 
@@ -193,11 +198,22 @@ namespace StarterAssets
             }
         }
 
+        private bool _isRolling = false;
         private void Update()
         {
+
+            // Check for roll input
+            if (Input.GetKeyDown(KeyCode.C) && !_isRolling)
+            {
+                _isRolling = true;
+                _animator.SetTrigger("Roll");
+
+                // Assuming the roll animation is 1 second long for this example. Adjust accordingly.
+                StartCoroutine(ResetRoll(.5f));
+            }
             if (!_isAlive) return; // If the player is not alive, stop processing the update here
 
-            
+
 
             // Check the player's health and disable inputs if health is 0 or less
             if (heartScript.Health <= 0 && _isAlive)
@@ -207,22 +223,30 @@ namespace StarterAssets
 
             // Check for the "H" key press to heal the player
             if (Input.GetKeyDown(KeyCode.H))
-    {
+            {
                 heartScript.AdjustHealth(.5F);
 
-    }
+            }
             if (Input.GetKeyDown(KeyCode.F))
             {
                 heartScript.AdjustHealth(-.5F);
 
             }
 
+         
             _hasAnimator = TryGetComponent(out _animator);
 
-            
+
             JumpAndGravity();
             GroundedCheck();
             Move();
+        }
+
+
+        IEnumerator ResetRoll(float duration)
+        {
+            yield return new WaitForSeconds(.5f);
+            _isRolling = false;
         }
         private void DisablePlayerInputs()
         {
@@ -242,6 +266,7 @@ namespace StarterAssets
 
         private void AssignAnimationIDs()
         {
+            _animIDRoll = Animator.StringToHash("Roll");
             _animIDSpeed = Animator.StringToHash("Speed");
             _animIDGrounded = Animator.StringToHash("Grounded");
             _animIDJump = Animator.StringToHash("Jump");
@@ -287,6 +312,11 @@ namespace StarterAssets
 
         private void Move()
         {
+            {
+                if (_isRolling) return; // Skip movement logic if rolling
+
+
+            }
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
@@ -354,7 +384,14 @@ namespace StarterAssets
         }
 
         private void JumpAndGravity()
+
         {
+            {
+                if (_isRolling) return; // Skip jump logic if rolling
+
+
+            }
+
             if (Grounded)
             {
                 // reset the fall timeout timer
@@ -465,4 +502,3 @@ namespace StarterAssets
 
     }
 }
-
