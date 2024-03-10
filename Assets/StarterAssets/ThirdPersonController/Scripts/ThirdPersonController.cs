@@ -314,11 +314,9 @@ namespace StarterAssets
 
         private void Move()
         {
-            {
-                if (_isRolling) return; // Skip movement logic if rolling
+            if (_isRolling) return; // Skip movement logic if rolling
 
 
-            }
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint && stamina.stamina > 0 ? SprintSpeed : MoveSpeed;
 
@@ -386,13 +384,9 @@ namespace StarterAssets
         }
 
         private void JumpAndGravity()
-
         {
-            {
-                if (_isRolling) return; // Skip jump logic if rolling
+            if (_isRolling) return; // Skip jump logic if rolling
 
-
-            }
 
             if (Grounded)
             {
