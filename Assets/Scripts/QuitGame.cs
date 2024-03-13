@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class QuitGame : MonoBehaviour
 {
+    GameObject QuitButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,8 @@ public class QuitGame : MonoBehaviour
     // Update is called once per frame
     public void SaveQuit()
     {
+        EventSystem.current.SetSelectedGameObject(QuitButton);
+        Cursor.lockState = CursorLockMode.Locked;
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else

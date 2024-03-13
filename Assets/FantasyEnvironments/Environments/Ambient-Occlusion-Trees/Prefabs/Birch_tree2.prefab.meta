@@ -1,8 +1,9 @@
 fileFormatVersion: 2
-guid: d0fef57aa8c0772448a3a57390d3c153
-timeCreated: 1504523403
-licenseType: Store
+guid: 5219ccfa3b129f645bfb105ac244e8f5
+labels:
+- Terrain
 NativeFormatImporter:
+  externalObjects: {}
   mainObjectFileID: 100100000
   userData: 
   assetBundleName: 
