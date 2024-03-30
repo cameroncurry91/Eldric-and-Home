@@ -20,13 +20,16 @@ public class HeartScript : MonoBehaviour
     public Sprite EightyPercentHeart;
     public Sprite TwentyPercentHeart;
     public Animator Temp; // Reference to the Animator component
-
-    // Fall damage variables
-    float distanceToGround = 1;
-    public float fallThreshold = 1f; // Minimum fall height to receive damage
+    public float fallThreshold = 10f; // Minimum fall height to receive damage
     private float highestPoint; // Tracks the highest point during a fall
     private bool isGrounded; // Tracks if the player is on the ground
 
+
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     private void Start()
     {
         {
@@ -71,23 +74,23 @@ public class HeartScript : MonoBehaviour
         isGrounded = Physics.Raycast(transform.position, -Vector3.up, out hit, raycastLength, groundLayer);
 
 
-        if (!isGrounded)
-        {
-            highestPoint = Mathf.Max(highestPoint, transform.position.y);
-        }
-        else if (highestPoint > 0)
-        {
-            float fallDistance = highestPoint - transform.position.y;
-            if (fallDistance > fallThreshold)
-            {
-                AdjustHealth(-Mathf.Infinity); // Apply fatal fall damage
-                if (Health <= 0)
-                {
-                    PlayDeathAnimation(); // Ensure death animation plays after fatal damage
-                }
-            }
-            highestPoint = 0;
-        }
+        //if (!isGrounded)
+        //{
+        //    highestPoint = Mathf.Max(highestPoint, transform.position.y);
+        //}
+        //else if (highestPoint > 0)
+        //{
+        //    float fallDistance = highestPoint - transform.position.y;
+        //    if (fallDistance > fallThreshold)
+        //    {
+        //        AdjustHealth(-Mathf.Infinity); // Apply fatal fall damage
+        //        if (Health <= 0)
+        //        {
+        //            PlayDeathAnimation(); // Ensure death animation plays after fatal damage
+        //        }
+        //    }
+        //    highestPoint = 0;
+        //}
     }
 
 

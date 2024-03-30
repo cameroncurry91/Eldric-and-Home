@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -18,7 +17,7 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
-       
+
 
         public HeartScript heartScript;
         private bool _isAlive = true;
@@ -147,8 +146,7 @@ namespace StarterAssets
         private void Start()
         {
 
-            // CurrentStamina = MaxStamina;
-            // StaminaBar.SetStamina(MaxStamina);
+
 
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
 
@@ -233,7 +231,7 @@ namespace StarterAssets
 
             }
 
-         
+
             _hasAnimator = TryGetComponent(out _animator);
 
             {
@@ -369,7 +367,6 @@ namespace StarterAssets
                 // rotate to face input direction relative to camera position
                 transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
             }
-
 
             Vector3 targetDirection = Quaternion.Euler(0.0f, _targetRotation, 0.0f) * Vector3.forward;
 

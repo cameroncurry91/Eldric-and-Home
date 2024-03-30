@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/EldricHouseIntoCutsceneInteriorTest.unity
+    guid: 2f584a18f6d43984585a9e7a50f465b5
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: f3b6e1b89fd967c45b37167ac45fa60d
   - enabled: 1

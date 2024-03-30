@@ -7,6 +7,11 @@ public class CompassScript : MonoBehaviour
     // Start is called before the first frame update
     public Transform player;
     Vector3 dir;
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
         
