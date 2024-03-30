@@ -16,6 +16,10 @@ TagManager:
   - Building
   - TopDownCamera
   - PlayerFollowCamera
+  - SpawnPoint
+  - Ladder
+  - TopCollider
+  - BottomCollider
   layers:
   - Default
   - TransparentFX

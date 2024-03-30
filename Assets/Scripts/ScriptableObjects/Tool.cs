@@ -11,4 +11,7 @@ public class Tool : ScriptableObject
     public int damage;
     public Sprite toolArt;
     public GameObject tool;
+
+    public static UnityEditor.Tool None { get; set; }
+    public static UnityEditor.Tool Move { get; set; }
 }
