@@ -19,7 +19,7 @@ public class OutsideTrigger : MonoBehaviour
 
     IEnumerator LoadSceneAsyncWithProgress()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(1);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(2);
         operation.allowSceneActivation = false; // Prevent automatic scene activation
 
         loadingScreen.SetActive(true);
