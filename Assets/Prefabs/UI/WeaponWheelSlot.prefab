@@ -347,8 +347,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be3736af516a1948b9a350e8d4450b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tool: {fileID: 0}
+  tool: {fileID: 11400000, guid: 0cba46d6affe1404c83cf9995ec88cc5, type: 2}
   displayName: {fileID: 640374926741554879}
   displayDescription: {fileID: 0}
   displayDamage: {fileID: 0}
   displayImage: {fileID: 1155549839946286044}
+  disabledImage: {fileID: 0}
