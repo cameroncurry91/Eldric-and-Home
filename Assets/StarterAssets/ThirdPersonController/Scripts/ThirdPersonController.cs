@@ -18,7 +18,7 @@ namespace StarterAssets
     public class ThirdPersonController : MonoBehaviour
     {
 
-
+        private static ThirdPersonController instance;
         public HeartScript heartScript;
         private bool _isAlive = true;
         private bool _IsRolling = true;
@@ -134,8 +134,21 @@ namespace StarterAssets
 
 
         private void Awake()
-        {
-            
+        { // Check if an instance already exists
+            if (instance == null)
+            {
+                // If not, set this instance as the singleton instance
+                ThirdPersonController thirdPersonController = this;
+                instance = thirdPersonController;
+                // Mark this GameObject to persist between scene transitions
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                // If an instance already exists, destroy this duplicate GameObject
+                Destroy(gameObject);
+            }
+
             // get a reference to our main camera
 
             if (_mainCamera == null)

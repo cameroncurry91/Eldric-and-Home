@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
-    public GameObject EldricPlayer;
+    public AudioSource audioSource; // Reference to the AudioSource component
 
     private bool isPaused = false;
 
@@ -48,14 +48,20 @@ public class PauseMenu : MonoBehaviour
     public void ResumeGame()
     {
         TogglePauseMenu();
+        PlayResumeSound(); // Play the audio clip after resuming the game
+    }
+
+    void PlayResumeSound()
+    {
+        if (audioSource != null)
+        {
+            audioSource.Play(); // Play the audio clip
+        }
     }
 
     // Method to open the main menu scene
     public void OpenMainMenu()
     {
-        // Cleanup: Destroy or disable any objects not needed in the main menu scene
-        Destroy(EldricPlayer); // Assuming playerGameObject is a reference to the player character
-
         // Load the main menu scene
         Time.timeScale = 1f; // Resume the game
         SceneManager.LoadScene("MainMenuScene");
