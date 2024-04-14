@@ -368,6 +368,7 @@ GameObject:
   - component: {fileID: 9074219750138056832}
   - component: {fileID: 6847134737293530718}
   - component: {fileID: 289858979281245914}
+  - component: {fileID: 8094297211050153638}
   m_Layer: 0
   m_Name: Eldric Player
   m_TagString: Player
@@ -387,14 +388,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8612600992348307903}
   - {fileID: 9015348454147932501}
   - {fileID: 8486640661271995640}
   - {fileID: 3879244365959776269}
   - {fileID: 8403025750305815527}
   - {fileID: 7314706104095442046}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: -100.174, z: 0}
 --- !u!95 &5153979762713481382
 Animator:
@@ -658,6 +658,20 @@ MonoBehaviour:
   slider: {fileID: 0}
   stamina: 100
   staminaCooldown: 6
+--- !u!114 &8094297211050153638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196808532044320531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645c1222636793540963c9cdb6612f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tools:
+  - {fileID: 8967843100189765053}
 --- !u!1 &1228881513135855204
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,7 +1769,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1248
+  m_VersionIndex: 1254
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -3080,6 +3094,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8612600992348307903}
   - {fileID: 9135045259509215621}
   - {fileID: 6653290198519225408}
   - {fileID: 4927972068497311399}
@@ -3824,13 +3839,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8967843100189765053}
-  m_LocalRotation: {x: 0.5849366, y: -0.5975081, z: -0.33155304, w: 0.4369277}
-  m_LocalPosition: {x: 0.28924465, y: 0.7970066, z: 0.12351912}
+  m_LocalRotation: {x: 0.07051789, y: -0.06577888, z: 0.67131287, w: 0.73487383}
+  m_LocalPosition: {x: 0.0019167587, y: 0.13506398, z: 0.034549315}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1219730153575925529}
-  m_Father: {fileID: 7957538089832307457}
+  m_Father: {fileID: 2748347744159454750}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &1246372422422357858
@@ -4903,7 +4918,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 4641
+  m_VersionIndex: 4647
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

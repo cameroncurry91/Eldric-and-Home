@@ -18,7 +18,9 @@ TagManager:
   - PlayerFollowCamera
   - SpawnPoint
   - Ladder
-  - FloatingText
+  - TopCollider
+  - BottomCollider
+  - WeaponWheel
   layers:
   - Default
   - TransparentFX
