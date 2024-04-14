@@ -19,7 +19,7 @@ public class InteriorHouseTrigger : MonoBehaviour
 
     IEnumerator LoadSceneAsyncWithProgress()
     {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(2);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(1);
         operation.allowSceneActivation = false; // Prevent automatic scene activation
 
         loadingScreen.SetActive(true);

@@ -20,7 +20,8 @@ public class QuitGame : MonoBehaviour
     public void SaveQuit()
     {
         EventSystem.current.SetSelectedGameObject(QuitButton);
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true; // Show the cursor
+        Cursor.lockState = CursorLockMode.None; // Unlock the cursor
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else
@@ -31,7 +32,7 @@ public class QuitGame : MonoBehaviour
     // Method to restart the current scene
     public void RestartScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(1);
     }
 }
 
