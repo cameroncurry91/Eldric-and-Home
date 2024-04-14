@@ -584,6 +584,7 @@ MonoBehaviour:
   look: {x: 0, y: 0}
   jump: 0
   sprint: 0
+  pause: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -672,6 +673,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tools:
   - {fileID: 8967843100189765053}
+  - {fileID: 1000010297929006, guid: 436e0a09a3d234b42b4637838878fd88, type: 3}
+  - {fileID: 100000, guid: c56b9df7cee41024aaf65cae7565754f, type: 3}
+  - {fileID: 1000012695253110, guid: f5a2d19d564785d45a6207078113bcaa, type: 3}
 --- !u!1 &1228881513135855204
 GameObject:
   m_ObjectHideFlags: 0
