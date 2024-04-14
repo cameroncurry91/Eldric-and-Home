@@ -7,6 +7,7 @@ public class WeaponWheel : MonoBehaviour
 {
     private bool isWheelActive;
     private bool toolEquipped;
+    private int equippedTool;
     private GameObject weaponWheelUI;
     public GameObject[] tools;
 
@@ -16,6 +17,7 @@ public class WeaponWheel : MonoBehaviour
         toolEquipped = false;
         isWheelActive = false;
         weaponWheelUI.SetActive(isWheelActive);
+        equippedTool = -1;
     }
 
     public void OnWeaponWheel(InputValue context)
@@ -45,15 +47,17 @@ public class WeaponWheel : MonoBehaviour
             if(tool.activeInHierarchy) tool.SetActive(false);
         }
 
-        if(toolEquipped == false)
+        if(toolEquipped == false || toolEquipped == true && equippedTool != index)
         {
             tools[index].SetActive(true);
             toolEquipped = true;
+            equippedTool = index;
         }
         else
         {
             tools[index].SetActive(false);
             toolEquipped = false;
+            equippedTool = -1;
         }
             
 
